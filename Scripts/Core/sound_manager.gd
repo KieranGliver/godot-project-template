@@ -56,7 +56,7 @@ func _on_volume_change(value: float) -> void:
 
 ## Called when an AudioStreamPlayer finishes playback.
 ## Removes any finished audio players.
-func _on_audio_stream_finished():
+func _on_audio_stream_finished() -> void:
 	close_finished()
 
 
@@ -78,7 +78,7 @@ func play(audio_name: String, play: bool = true) -> AudioStreamPlayer:
 
 
 ## Stops and frees all active audio players.
-func stop_all():
+func stop_all() -> void:
 	var children = get_children()
 	for i in children:
 		i.queue_free()
@@ -86,7 +86,7 @@ func stop_all():
 
 ## Stops and frees audio players whose name starts with `child_name`.
 ## @param child_name - Prefix to match against AudioStreamPlayer node names.
-func stop(child_name: String):
+func stop(child_name: String) -> void:
 	var children = get_children()
 	var filter = func(child): return child.name.begins_with(child_name)
 	var filtered_children = children.filter(filter)
@@ -95,12 +95,12 @@ func stop(child_name: String):
 
 ## Sets the master volume for all current and future sounds.
 ## @param value - New volume in decibels.
-func set_volume(value: float):
+func set_volume(value: float) -> void:
 	master_volume = value
 
 
 ## Removes any AudioStreamPlayers that are no longer playing.
-func close_finished():
+func close_finished() -> void:
 	var children = get_children()
 	for i in children:
 		if !i.playing:

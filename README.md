@@ -18,10 +18,11 @@ git clone https://github.com/kierangliver/godot-project-template.git
 
 Some scripts in this template are designed to be available globally. They are added to Autoload so they can be accessed anywhere in your project. These scripts are:
 
-| Path                                    | Node Name    | Notes                           |
-|-----------------------------------------|--------------|---------------------------------|
-| `res://Scripts/Autoload/event_bus.gd`   | *Event*      | Global Event System (pub/sub)   |
-| `res://Scripts/Autoload/file_loader.gd` | *FileLoader* | Global file and resource loader |
+| Path                                     | Node Name     | Notes                           |
+|------------------------------------------|---------------|---------------------------------|
+| `res://Scripts/Autoload/event_bus.gd`    | *Event*       | Global Event System (pub/sub)   |
+| `res://Scripts/Autoload/file_loader.gd`  | *FileLoader*  | Global file and resource loader |
+| `res://Scripts/Autoload/save_manager.gd` | *SaveManager* | Global savefile system          |
 
 You can access them anywhere:
 ```gdscript
@@ -71,4 +72,22 @@ player.play()
 * Scans a folder for audio files
 * Plays, stops, and sets volume for sounds
 * Listens to `Event.sound` signals
+---
+### Save Manager
+* Global data dictionary for save data
+* Saves data as a json in local files
+* Load save files on system to data
 
+Example - Reset save data:
+```gdscript
+SaveManager.reset()
+```
+Example - Save data:
+```gdscript
+SaveManager.data["value"] = 1
+SaveManager.save_json()
+```
+Example - Load data:
+```gdscript
+SaveManager.load_json()
+```

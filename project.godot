@@ -19,3 +19,4 @@ config/icon="res://icon.svg"
 
 FileLoader="*res://Scripts/Autoload/file_loader.gd"
 Event="*res://Scripts/Autoload/event_bus.gd"
+SaveManager="*res://Scripts/Autoload/save_manager.gd"
