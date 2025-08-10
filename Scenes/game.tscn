@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://codqmcxqlwbhu"]
+
+[ext_resource type="Script" uid="uid://c2p535otbrn1c" path="res://Scripts/game.gd" id="1_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://c72l7asueuamx" path="res://icon.svg" id="2_wrm1d"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_qxrlw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(693, 178)
+texture = ExtResource("2_wrm1d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UserInterface" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/UserInterface"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Go Back"
+
+[connection signal="pressed" from="CanvasLayer/UserInterface/Button" to="." method="_on_button_pressed"]

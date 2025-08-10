@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://kxd830s022f5"]
+
+[ext_resource type="Script" uid="uid://c11ylkhpnht5k" path="res://Scripts/Core/scene_manager.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://cmpuy6djmr3bo" path="res://Scenes/menu.tscn" id="2_8gbba"]
+[ext_resource type="Script" uid="uid://c7basm0npy27w" path="res://Scripts/Core/sound_manager.gd" id="2_bo1nx"]
+
+[sub_resource type="GDScript" id="GDScript_8gbba"]
+script/source = "extends Node
+"
+
+[node name="Main" type="Node"]
+script = SubResource("GDScript_8gbba")
+
+[node name="Scene" type="Node" parent="."]
+script = ExtResource("1_jjgbg")
+
+[node name="Menu" parent="Scene" instance=ExtResource("2_8gbba")]
+
+[node name="Sound" type="Node" parent="."]
+script = ExtResource("2_bo1nx")
