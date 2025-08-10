@@ -1,7 +1,18 @@
 extends Node
 class_name File
+"""
+File utility functions for Godot.
 
+Provides:
+- Directory traversal
+- Scene instantiation with optional callbacks
+- Audio stream player creation
+"""
 
+## Recursively or non-recursively get file paths in a directory.
+## @param dir_path - The folder path to scan.
+## @param nested - If true, searches subfolders recursively.
+## @return - List of file paths found.
 func traverse_directory(dir_path: String, nested: bool = true) -> Array[String]:
 	var dir = DirAccess.open(dir_path)
 	var ret: Array[String] = []
@@ -17,7 +28,13 @@ func traverse_directory(dir_path: String, nested: bool = true) -> Array[String]:
 		element_name = dir.get_next()
 	return ret
 
-
+## Load a PackedScene from a file and add it to a parent node.
+## Optionally run callbacks before and after adding the node.
+## @param path - Path to the `.tscn` file.
+## @param parent - Node that will own the instantiated scene.
+## @param before_add_child - Runs before adding to the parent.
+## @param after_add_child - Runs after adding to the parent.
+## @return - The instantiated scene root, or null if loading fails.
 func instantiate(
 		path: String, 
 		parent: Node, 
@@ -33,7 +50,11 @@ func instantiate(
 	after_add_child.call(scene_instance)
 	return scene_instance
 
-
+## Create and add an AudioStreamPlayer from an audio file.
+## @param path - Path to the audio file.
+## @param parent - Node that will own the AudioStreamPlayer.
+## @param volume - Volume in decibels.
+## @return - The created audio player, or null if loading fails.
 func player(
 		path: String, 
 		parent: Node, 
